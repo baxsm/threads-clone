@@ -1,11 +1,18 @@
-import { FC } from 'react'
+import { FC } from "react";
 
-interface RightSidebarProps {
-  
-}
+const RightSidebar: FC = () => {
+  return (
+    <section className="custom-scrollbar rightsidebar">
+      <div className="flex flex-1 flex-col justify-start">
+        <h3 className="text-heading4-medium text-light-1">
+          Suggested Communities
+        </h3>
+      </div>
+      <div className="flex flex-1 flex-col justify-start">
+        <h3 className="text-heading4-medium text-light-1">Suggested Users</h3>
+      </div>
+    </section>
+  );
+};
 
-const RightSidebar: FC<RightSidebarProps> = ({}) => {
-  return <div>RightSidebar</div>
-}
-
-export default RightSidebar
+export default RightSidebar;
