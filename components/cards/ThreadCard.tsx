@@ -108,6 +108,8 @@ const ThreadCard: FC<ThreadCardProps> = ({
             </div>
           </div>
         </div>
+        
+      </div>
         {!isComment && community && (
           <Link
             href={`/communities/${community.id}`}
@@ -125,7 +127,6 @@ const ThreadCard: FC<ThreadCardProps> = ({
             />
           </Link>
         )}
-      </div>
     </article>
   );
 };
