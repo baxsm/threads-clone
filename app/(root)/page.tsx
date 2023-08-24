@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs";
 
 export default async function Home() {
   const user = await currentUser();
-  const result = await fetchThreads({ pageNumber: 1, pageSize: 30 });
+  const result = await fetchThreads(1, 30);
 
   return (
     <div>

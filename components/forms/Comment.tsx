@@ -42,13 +42,7 @@ const Comment: FC<CommentProps> = ({
   });
 
   const onSubmit = async (values: z.infer<typeof commentSchema>) => {
-    console.log(values);
-    await addCommentToThread({
-      commentText: values.thread,
-      path: pathname,
-      threadId: threadId,
-      userId: currentUserId,
-    });
+    await addCommentToThread(threadId, values.thread, currentUserId, pathname);
     form.reset();
   };
 
