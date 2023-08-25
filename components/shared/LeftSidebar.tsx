@@ -7,12 +7,13 @@ import { FC } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { SignedIn, SignOutButton } from "@clerk/nextjs";
 import { useAuth } from "@clerk/nextjs";
+import { Button } from "../ui/button";
 
 const LeftSidebar: FC = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const {userId} = useAuth();
+  const { userId } = useAuth();
 
   return (
     <section className="custom-scrollbar leftsidebar">
@@ -22,14 +23,19 @@ const LeftSidebar: FC = () => {
             (pathname.includes(link.route) && link.route.length > 1) ||
             pathname === link.route;
 
-          if(link.route === "/profile") {
-            link.route = `${link.route}/${userId}`
+          if (link.route === "/profile") {
+            link.route = `${link.route}/${userId}`;
           }
           return (
-            <Link
-              href={link.route}
+            <Button
+              onClick={() => router.push(link.route)}
               key={link.label}
-              className={`leftsidebar_link ${isActive ? "bg-primary-500" : ""}`}
+              variant="ghost"
+              className={` ${
+                isActive
+                  ? "bg-primary-500 hover:bg-primary-500"
+                  : "hover:bg-gray-800"
+              } duration-300 flex justify-start py-8 gap-4`}
             >
               <Image
                 src={link.imgURL}
@@ -38,7 +44,7 @@ const LeftSidebar: FC = () => {
                 height={24}
               />
               <p className="text-light-1 max-lg:hidden">{link.label}</p>
-            </Link>
+            </Button>
           );
         })}
       </div>

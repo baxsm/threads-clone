@@ -45,33 +45,31 @@ const PostThread: FC<PostThreadProps> = ({ userId }) => {
       communityId: organization ? organization.id : null,
       path: pathname,
     });
+    form.reset();
     router.push("/");
   };
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-start gap-10 mt-10"
-      >
-        <FormField
-          control={form.control}
-          name="thread"
-          render={({ field }) => (
-            <FormItem className="flex flex-col gap-3 w-full">
-              <FormLabel className="text-base-semibold text-light-2">
-                Content
-              </FormLabel>
-              <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
-                <Textarea rows={15} {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" className="bg-primary-500">
-          Post Thread
-        </Button>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full mt-8">
+        <div className="p-4 flex flex-col gap-4 bg-dark-3 rounded-2xl">
+          <FormField
+            control={form.control}
+            name="thread"
+            render={({ field }) => (
+              <FormItem className="flex flex-col gap-3 w-full">
+                <FormControl className="no-focus border border-dark-4 bg-dark-2 text-light-1">
+                  <Textarea {...field} className="min-h-[120px] resize-none" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="flex gap-4 items-center justify-between">
+            <div className="actions"></div>
+            <Button className="bg-primary-500">Post</Button>
+          </div>
+        </div>
       </form>
     </Form>
   );
